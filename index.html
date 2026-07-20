@@ -1,31 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/dist/output.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Website project template</title>
-</head>
-<script>
-    const loadComponents = (id, url) =>  {
-        fetch(url)
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @theme {
+            --font-outfit: "Outfit", sans-serif;
+        }
+    </style>
+  </head>
+  <script>
+    const loadComponents = (id, url) => {
+      fetch(url)
         .then((response) => response.text())
         .then((html) => {
-            document.getElementById(id).innerHTML = html;
+          document.getElementById(id).innerHTML = html;
+        })
+        .catch((err) => {
+          console.info("dsfgdsfg");
+          console.info(err);
         });
-    }
+    };
 
     window.onload = () => {
-        loadComponents('header', 'src/sections/header.html');
-        loadComponents('hero', 'src/sections/hero.html');
-        loadComponents('contact', 'src/sections/contact.html');
-        loadComponents('footer', 'src/sections/footer.html');
-    }
-</script>
-<body>
+      loadComponents("header", "./src/sections/header.html");
+      loadComponents("hero", "src/sections/hero.html");
+      loadComponents("contact", "src/sections/contact.html");
+      loadComponents("footer", "src/sections/footer.html");
+    };
+  </script>
+  <body class="bg-[#EFECEA]">
     <div id="header"></div>
     <div id="hero"></div>
     <div id="contact"></div>
     <div id="footer"></div>
-</body>
+  </body>
 </html>
