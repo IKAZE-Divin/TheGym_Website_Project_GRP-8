@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dist/output.css">
+    <title>Website project template</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+            @theme {
+                --font-outfit: "Outfit", sans-serif;
+            }
+
+            #header,
+            #header * {
+                color: #00672E !important; /* Tailwind's green-600 */
+    }
+
+</style>
+</head>
+<script>
+    const loadComponents = (id, url) =>  {
+        fetch(url)
+        .then((response) => response.text())
+        .then((html) => {
+            document.getElementById(id).innerHTML = html;
+        });
+    }
+
+    window.onload = () => {
+        loadComponents('contact', 'src/page2/contacts.html');
+        loadComponents('footer', 'src/sections/footer.html');
+    }
+</script>
+<body class="bg-[#EFECEA] text-[#00672E] font-outfit">
+    <div id="header" class="mb-12">
+        <header class="fixed top-0 left-0 z-50 w-full flex items-start justify-between px-6 md:px-10 py-5 font-sans">
+    <!-- Left: language switcher -->
+    <div class="flex flex-col text-[15px] font-medium text-gray-900 leading-relaxed relative z-10">
+        <a href="#" class="hover:opacity-60 cursor-pointer text-base sm:text-lg md:text-[15px]">DE</a>
+        <a href="#" class="hover:opacity-60 cursor-pointer text-base sm:text-lg md:text-[15px]">EN</a>
+    </div>
+
+    <!-- Center: logo -->
+    <div class="relative inline-block">
+    <img
+        src="/src/Assets/Vector_5(header shape).png"
+        alt=""
+        aria-hidden="true"
+        class="absolute top-1/2 left-1/2 w-[130%] h-[210%] -translate-x-1/2 -translate-y-1/2 -z-10 object-contain pointer-events-none select-none"
+        onerror="this.style.display='none'"
+    />
+    <div class="relative">
+        
+        <img src="/src/Assets/Vector_5(header shape).png" >
+    
+        <h1 class="absolute top-2 left-7  self-center text-2xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 z-10 whitespace-nowrap">
+            Baumeister
+        </h1>
+    </div>
+</div>
+
+    <!-- Right: nav links (desktop) -->
+    <nav id="nav-links-desktop" class="hidden md:flex flex-col items-end text-[15px] lg:text-base font-medium text-gray-900 leading-relaxed relative z-10">
+        <a href="#" class="hover:opacity-60 cursor-pointer">About</a>
+        <a href="#" class="hover:opacity-60 cursor-pointer">Services</a>
+        <a href="#" class="hover:opacity-60 cursor-pointer">References</a>
+        <a href="#" class="hover:opacity-60 cursor-pointer">Contact</a>
+    </nav>
+
+    <!-- Right: burger / X toggle (mobile) -->
+    <button id="nav-toggle-btn" aria-label="Toggle menu" aria-expanded="false"
+        class="md:hidden flex flex-col justify-center items-center w-8 h-8 self-start gap-[5px] relative z-10">
+        <img src="/src/Assets/Green_burger_menu.png" alt="Menu" class="w-[39px] h-[23px]">
+    </button>
+
+    <!-- Mobile dropdown menu -->
+    <nav id="nav-links-mobile"
+        class="hidden md:hidden absolute top-full left-0 w-full bg-white flex flex-col items-center gap-4 py-6 text-base font-medium text-gray-900 shadow-md z-50">
+        <img src="/src/Assets/X_icon.png" alt="Close" class="w-[39px] h-[23px] self-end mr-6 cursor-pointer" id="nav-close-btn">
+    </nav>
+</header>
+
+</div>
+    <div id="contact"></div>
+    <div id="footer"></div>
+</body>
+</html>
