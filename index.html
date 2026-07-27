@@ -7,25 +7,41 @@
     <title>Website project template</title>
 </head>
 <script>
-    const loadComponents = (id, url) =>  {
-        fetch(url)
-        .then((response) => response.text())
-        .then((html) => {
-            document.getElementById(id).innerHTML = html;
-        });
-    }
+    const loadComponents = async (id, url) => {
 
-    window.onload = () => {
-        loadComponents('header', 'src/sections/header.html');
-        loadComponents('hero', 'src/sections/hero.html');
-        loadComponents('contact', 'src/sections/contact.html');
-        loadComponents('footer', 'src/sections/footer.html');
-    }
+    const response = await fetch(url);
+
+    const html = await response.text();
+
+    document.getElementById(id).innerHTML = html;
+
+}
+
+    window.onload = async () => {
+
+    await loadComponents('header', 'src/sections/header.html');
+
+    await loadComponents('hero', 'src/sections/hero.html');
+
+    await loadComponents('contact', 'src/sections/contact.html');
+
+    await loadComponents('footer', 'src/sections/footer.html');
+
+    const script = document.createElement("script");
+    script.type = "module";
+    script.src = "/src/js/hero.js";
+
+    document.body.appendChild(script);
+}
 </script>
 <body>
-    <div id="header"></div>
-    <div id="hero"></div>
+    <div id="header" class="fixed top-0 left-0 w-full z-50"></div>
+    <div id="hero-container" class="relative w-full">
+        <div id="hero"></div>
+    </div>
     <div id="contact"></div>
     <div id="footer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 </body>
 </html>
