@@ -38,15 +38,13 @@
     const burgerIcon = document.getElementById('Green_burger_menu');
     const xIcon = document.getElementById('Green_x_icon');
     const mobileNav = document.getElementById('nav-links-mobile');
-    const desktopNav = document.getElementById('nav-links-desktop');
-    const siteHeader = document.getElementById('site-header');
 
     if (!toggleBtn) return;
 
     const openMenu = () => {
         burgerIcon.style.display = 'none';
         xIcon.style.display = 'block';
-        mobileNav.style.maxHeight = mobileNav.scrollHeight + 'px';
+        mobileNav.style.maxHeight = '600px'; // generous fixed value, no measuring needed
         mobileNav.style.opacity = '1';
         mobileNav.style.pointerEvents = 'auto';
         toggleBtn.setAttribute('aria-expanded', 'true');
@@ -61,23 +59,7 @@
         toggleBtn.setAttribute('aria-expanded', 'false');
     };
 
-    const syncDesktopNav = () => {
-    desktopNav.style.display = window.innerWidth >= 1024 ? 'flex' : 'none';
-};
-    const syncHeaderOffset = () => {
-        // Push the nav's first link below the real header height, whatever it is
-        mobileNav.style.paddingTop = siteHeader.offsetHeight + 'px';
-    };
-
-    // Force correct initial state immediately, don't trust CSS
-    xIcon.style.display = 'none';
     closeMenu();
-    syncDesktopNav();
-    syncHeaderOffset();
-    window.addEventListener('resize', () => {
-        syncDesktopNav();
-        syncHeaderOffset();
-    });
 
     toggleBtn.addEventListener('click', () => {
         const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
