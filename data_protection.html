@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/dist/output.css">
+    <title>Website project template</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+            @theme {
+                --font-outfit: "Outfit", sans-serif;
+            }
+            #header,
+            #header * {
+                color: #00672E !important; /* Tailwind's green-600 */
+    }
+</style>
+</head>
+<script>
+    const loadComponents = (id, url) =>  {
+        fetch(url)
+        .then((response) => response.text())
+        .then((html) => {
+            document.getElementById(id).innerHTML = html;
+        });
+    }
+    window.onload = () => {
+        loadComponents('green_header', 'src/sections/green_header.html');
+        loadComponents('policies', 'src/page3/policies.html');
+        loadComponents('footer', 'src/sections/footer.html');
+    }
+</script>
+
+<body class="bg-[#EFECEA] text-[#00672E] font-outfit">
+    <div id="green_header"></div>
+    <div id="policies"></div>
+    <div id="footer"></div>
+</body>
+</html>
