@@ -1,31 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/dist/output.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Website project template</title>
-</head>
-<script>
-    const loadComponents = (id, url) =>  {
-        fetch(url)
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @theme {
+            --font-outfit: "Outfit", sans-serif;
+        }
+    </style>
+  </head>
+  <script src="src/js/toggle.js"></script>
+  <script>
+    const loadComponents = (id, url, callback) => {
+      fetch(url)
         .then((response) => response.text())
         .then((html) => {
-            document.getElementById(id).innerHTML = html;
+          document.getElementById(id).innerHTML = html;
+          if (callback) callback();
+        })
+        .catch((err) => {
+          console.info("dsfgdsfg");
+          console.info(err);
         });
-    }
+    };
+
+    const initHeaderToggle = () => {
+      const toggleBtn = document.getElementById('nav-toggle-btn');
+      const burgerIcon = document.getElementById('burger-icon');
+      const xIcon = document.getElementById('x-icon');
+      const mobileNav = document.getElementById('nav-links-mobile');
+
+      if (!toggleBtn) return; // safety check
+
+      toggleBtn.addEventListener('click', () => {
+        const isOpen = !mobileNav.classList.contains('hidden');
+
+        mobileNav.classList.toggle('hidden');
+        burgerIcon.classList.toggle('hidden');
+        xIcon.classList.toggle('hidden');
+
+        toggleBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    };
 
     window.onload = () => {
-        loadComponents('header', 'src/sections/header.html');
-        loadComponents('hero', 'src/sections/hero.html');
-        loadComponents('contact', 'src/sections/contact.html');
-        loadComponents('footer', 'src/sections/footer.html');
-    }
-</script>
-<body>
+      loadComponents("header", "./src/sections/header.html", initHeaderToggle);
+      loadComponents("hero", "src/sections/hero.html");
+      loadComponents("contact", "src/sections/contact.html");
+      loadComponents("footer", "src/sections/footer.html");
+    };
+  </script>
+  <body class="bg-[#EFECEA]">
     <div id="header"></div>
     <div id="hero"></div>
     <div id="contact"></div>
     <div id="footer"></div>
-</body>
+  </body>
 </html>
