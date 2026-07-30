@@ -1,9 +1,14 @@
 {
   "scripts": {
-   "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-   "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css"
+    "dev": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/output.css",
+    "build:prod": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
   },
   "devDependencies": {
     "tailwindcss": "^3.3.3"
+  },
+  "dependencies": {
+    "baseline-browser-mapping": "^2.11.6",
+    "caniuse-lite": "^1.0.30001806"
   }
 }
