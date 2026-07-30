@@ -1,5 +1,9 @@
 <div class="font-outfit">
+<<<<<<< HEAD
   <header class="fixed top-0 left-0 w-full z-50 flex items-start justify-between px-6 md:px-10 py-5 font-sans bg-transparent">
+=======
+  <header class="fixed top-0 left-0 w-full flex items-start justify-between px-6 md:px-10 py-5 font-sans bg-transparent z-50">
+>>>>>>> 7da95db (chore: modified the contact, header and hero for the nav to not interfere with other sections)
     <!-- Left: language switcher -->
 <div class="relative z-20 flex flex-col text-[15px] font-medium text-gray-900 leading-relaxed">
   <a href="#" class="hover:opacity-60 cursor-pointer text-xl sm:text-lg md:text-[15px]">DE</a>
@@ -43,23 +47,3 @@
 </nav>
   </header>
 </div>
-
-<script>
-  (function () {
-    const toggleBtn = document.getElementById('nav-toggle-btn');
-    const burgerIcon = document.getElementById('burger-icon');
-    const xIcon = document.getElementById('x-icon');
-    const mobileNav = document.getElementById('nav-links-mobile');
-
-    toggleBtn.addEventListener('click', function () {
-      const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
-      const nextOpen = !isOpen;
-
-      burgerIcon.classList.toggle('hidden', nextOpen);
-      xIcon.classList.toggle('hidden', !nextOpen);
-      mobileNav.classList.toggle('hidden', !nextOpen);
-
-      toggleBtn.setAttribute('aria-expanded', String(nextOpen));
-    });
-  })();
-</script>

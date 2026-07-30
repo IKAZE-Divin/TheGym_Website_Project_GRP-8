@@ -3,14 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Website project template</title>
-    <link rel="stylesheet" href="/dist/output.css">
-    
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <style type="text/tailwindcss">
+        @theme {
+            --font-outfit: "Outfit", sans-serif;
+        }
+    </style>
   </head>
   <script src="src/js/sticky-vectors.js"></script>
   <script>
     const loadComponents = (id, url, callback) => {
-      return fetch(url)
+      fetch(url)
         .then((response) => response.text())
         .then((html) => {
           document.getElementById(id).innerHTML = html;
@@ -43,9 +51,7 @@
 
     window.onload = () => {
       loadComponents("header", "./src/sections/header.html", initHeaderToggle);
-      loadComponents("hero", "src/sections/hero.html", () => {
-        initStickyVectors('hero-container');
-      });
+      loadComponents("hero", "src/sections/hero.html");
       loadComponents("contact", "src/sections/contact.html");
       loadComponents("footer", "src/sections/footer.html");
     };
