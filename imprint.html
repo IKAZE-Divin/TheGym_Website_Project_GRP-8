@@ -10,28 +10,90 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
     <style type="text/tailwindcss">
-            @theme {
-                --font-outfit: "Outfit", sans-serif;
-            }
-            #header,
-            #header * {
-                color: #00672E !important; /* Tailwind's green-600 */
-    }
-</style>
+        @theme {
+            --font-outfit: "Outfit", sans-serif;
+        }
+        #header,
+        #header * {
+            color: #00672E !important;
+        }
+    </style>
 </head>
 <script>
-    const loadComponents = (id, url) =>  {
+    const loadComponents = (id, url, callback) => {
         fetch(url)
-        .then((response) => response.text())
-        .then((html) => {
-            document.getElementById(id).innerHTML = html;
-        });
-    }
+            .then((response) => response.text())
+            .then((html) => {
+                document.getElementById(id).innerHTML = html;
+                if (callback) callback();
+            })
+            .catch((err) => {
+                console.info("Failed to load component:", url);
+                console.info(err);
+            });
+    };
+
+   const initHeaderToggle = () => {
+    const toggleBtn = document.getElementById('nav-toggle-btn');
+    const burgerIcon = document.getElementById('Green_burger_menu');
+    const xIcon = document.getElementById('Green_x_icon');
+    const mobileNav = document.getElementById('nav-links-mobile');
+    const desktopNav = document.getElementById('nav-links-desktop');
+    const siteHeader = document.getElementById('site-header');
+
+    if (!toggleBtn) return;
+
+    const openMenu = () => {
+        burgerIcon.style.display = 'none';
+        xIcon.style.display = 'block';
+        mobileNav.style.maxHeight = mobileNav.scrollHeight + 'px';
+        mobileNav.style.opacity = '1';
+        mobileNav.style.pointerEvents = 'auto';
+        toggleBtn.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeMenu = () => {
+        burgerIcon.style.display = 'block';
+        xIcon.style.display = 'none';
+        mobileNav.style.maxHeight = '0px';
+        mobileNav.style.opacity = '0';
+        mobileNav.style.pointerEvents = 'none';
+        toggleBtn.setAttribute('aria-expanded', 'false');
+    };
+
+    const syncDesktopNav = () => {
+    desktopNav.style.display = window.innerWidth >= 1024 ? 'flex' : 'none';
+};
+    const syncHeaderOffset = () => {
+        // Push the nav's first link below the real header height, whatever it is
+        mobileNav.style.paddingTop = siteHeader.offsetHeight + 'px';
+    };
+
+    // Force correct initial state immediately, don't trust CSS
+    xIcon.style.display = 'none';
+    closeMenu();
+    syncDesktopNav();
+    syncHeaderOffset();
+    window.addEventListener('resize', () => {
+        syncDesktopNav();
+        syncHeaderOffset();
+    });
+
+    toggleBtn.addEventListener('click', () => {
+        const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeMenu() : openMenu();
+    });
+
+    mobileNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+};
+
     window.onload = () => {
-        loadComponents('green_header', 'src/sections/green_header.html');
-        loadComponents('contacts', 'src/page2/contacts.html');
-        loadComponents('footer', 'src/sections/footer.html');
-    }
+        loadComponents("green_header", "src/sections/green_header.html", initHeaderToggle);
+        loadComponents("contacts", "src/page2/contacts.html");
+        loadComponents("footer", "src/sections/footer.html");
+    };
 </script>
 
 <body class="bg-[#EFECEA] text-[#00672E] font-outfit">
