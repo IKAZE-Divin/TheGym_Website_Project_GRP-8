@@ -3,9 +3,9 @@
         <!-- Row wrapper now owns the grid, not the whole header -->
         <div class="grid grid-cols-3 items-center px-6 md:px-10 py-5">
             <!-- Left: language switcher -->
-            <div class="flex flex-col text-[15px] font-medium leading-relaxed relative z-10 justify-self-start">
-                <a href="#" class="hover:opacity-60 cursor-pointer text-base sm:text-lg md:text-[15px]">DE</a>
-                <a href="#" class="hover:opacity-60 cursor-pointer text-base sm:text-lg md:text-[15px]">EN</a>
+            <div class="flex flex-col text-[10px] lg:text-[15px] font-medium leading-relaxed relative z-10 justify-self-start">
+                <a href="#" class="hover:opacity-60 cursor-pointer text-base sm:text-lg md:text-[10px] lg:text-[15px]">DE</a>
+                <a href="#" class="hover:opacity-60 cursor-pointer text-base sm:text-lg md:text-[10px] lg:text-[15px]">EN</a>
             </div>
 
             <!-- Center: logo -->
@@ -14,11 +14,11 @@
                     src="/src/Assets/Vector_5(header shape).png"
                     alt=""
                     aria-hidden="true"
-                    class="md:hidden absolute top-0 left-0 w-[130%] h-[210%] -translate-x-1/2 -translate-y-1/2 -z-10 object-contain pointer-events-none select-none"
+                    class="lg:hidden absolute md:top-[3rem] md:left-[12rem] top-[2rem] left-[8rem] w-[60rem] md:w-[70rem] h-auto -translate-x-1/2 -translate-y-1/2 -z-10 object-contain pointer-events-none select-none"
                     onerror="this.style.display='none'"
                 />
                 <a href="index.html#body">
-                <h1 class="relative text-2xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 z-10 text-center whitespace-nowrap">
+                <h1 class="relative text-2xl md:text-4xl lg:text-5xl font-outfit font-bold text-gray-900 z-10 text-center whitespace-nowrap">
                 Baumeister
                 </h1>
                 </a>
@@ -26,7 +26,7 @@
 
             <!-- Right: nav links (desktop) -->
             <nav id="nav-links-desktop"
-                class="hidden lg:flex flex-col items-end text-[15px] lg:text-base font-medium leading-relaxed relative z-10 justify-self-end">
+                class="hidden lg:flex flex-col items-end text-[10px] lg:text-base font-outfit leading-relaxed relative z-10 justify-self-end">
                 <a href="index.html#about" class="hover:opacity-60 cursor-pointer">About</a>
                 <a href="index.html#services" class="hover:opacity-60 cursor-pointer">Services</a>
                 <a href="index.html#references" class="hover:opacity-60 cursor-pointer">References</a>
@@ -44,7 +44,7 @@
         <!-- Mobile dropdown menu — sibling of the row div, not a grid item -->
         <nav id="nav-links-mobile"
     style="max-height: 0px; opacity: 0; overflow: hidden; pointer-events: none;"
-    class="absolute top-full left-0 w-full z-40 flex flex-col items-center justify-start gap-2 bg-transparent transition-all duration-300 ease-in-out">
+    class="absolute top-full left-0 w-full z-40 flex flex-col items-center justify-start gap-2 bg-transparent transition-all duration-300 ease-in-out font-outfit font-semibold">
             <a href="index.html#about" class="hover:opacity-60 cursor-pointer text-3xl sm:text-2xl">About</a>
             <a href="index.html#services" class="hover:opacity-60 cursor-pointer text-3xl sm:text-2xl">Services</a>
             <a href="index.html#references" class="hover:opacity-60 cursor-pointer text-3xl sm:text-2xl">References</a>
