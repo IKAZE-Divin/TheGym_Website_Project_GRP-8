@@ -1,4 +1,47 @@
-<div>
-    <h1 class="text-blue-800">Header</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quibusdam.</p>
+<div class="font-outfit">
+  <header class="fixed top-0 left-0 w-full flex items-start justify-between px-6 md:px-10 py-5 font-sans bg-transparent z-50">
+    <!-- Left: language switcher -->
+<div class="relative z-20 flex flex-col text-[15px] font-medium text-gray-900 leading-relaxed">
+  <a href="#" class="hover:opacity-60 cursor-pointer text-2xl sm:text-lg md:text-[15px]">DE</a>
+  <a href="#" class="hover:opacity-60 cursor-pointer text-2xl sm:text-lg md:text-[15px]">EN</a>
+</div>
+
+    <!-- Center: logo -->
+    <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
+      <img 
+        src="/src/Assets/Vector 5(header shape).png" 
+        alt=""
+        class="absolute inset-0 m-auto w-auto h-[20rem] object-contain z-0 block md:hidden"
+      >
+      <a href="index.html#body">
+        <h1 class="relative text-2xl md:text-4xl lg:text-5xl font-outfit font-bold text-gray-900 z-10 text-center whitespace-nowrap">
+          Baumeister
+        </h1>
+      </a>
+    </div>
+
+    <!-- Desktop nav: only show at lg and above -->
+<nav id="nav-links-desktop" class="hidden lg:flex flex-col items-end text-[25px] font-outfit font-medium text-gray-900 leading-relaxed">
+  <a href="index.html#about" class="hover:opacity-60 cursor-pointer">About</a>
+  <a href="index.html#services" class="hover:opacity-60 cursor-pointer">Services</a>
+  <a href="index.html#references" class="hover:opacity-60 cursor-pointer">References</a>
+  <a href="#" class="hover:opacity-60 cursor-pointer">Contact</a>
+</nav>
+
+<!-- Burger / X toggle: show below lg -->
+<button id="nav-toggle-btn" aria-label="Toggle menu" aria-expanded="false"
+  class="lg:hidden relative flex justify-center items-center w-[39px] h-[23px] self-start">
+  <img src="/src/Assets/Burger_menu.png" alt="Menu" class="absolute inset-0 w-full h-full" id="burger-icon">
+  <img src="/src/Assets/X_icon.png" alt="Close" class="absolute inset-0 w-auto h-[2rem] hidden" id="x-icon">
+</button>
+
+<!-- Mobile dropdown menu -->
+<nav id="nav-links-mobile"
+  class="hidden lg:hidden absolute top-full left-0 w-full flex flex-col items-center gap-6 py-8 font-outfit font-medium text-green-800 z-50">
+  <a href="index.html#about" class="hover:opacity-60 cursor-pointer text-3xl sm:text-2xl">About</a>
+  <a href="index.html#services" class="hover:opacity-60 cursor-pointer text-3xl sm:text-2xl">Services</a>
+  <a href="index.html#references" class="hover:opacity-60 cursor-pointer text-3xl sm:text-2xl">References</a>
+  <a href="#" class="hover:opacity-60 cursor-pointer text-3xl sm:text-2xl">Contact</a>
+</nav>
+  </header>
 </div>
